@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Simplifai",
+  "description": "N/A",
+  "version": "0.0.1",
+  "background": {
+    "service_worker": "./worker.js"
+  },
+  "permissions": ["scripting", "activeTab", "contextMenus"]
+}
