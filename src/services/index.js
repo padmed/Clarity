@@ -1,7 +1,6 @@
-require("dotenv").config();
-const axios = require("axios");
+import axios from "axios";
 
-const API_KEY_AI = process.env.API_KEY_AI;
+const API_KEY_AI = "40xWby26Fb2w295NMSXdJRtWbVsgWqgd";
 const apiUrl =
   "https://api.deepinfra.com/v1/inference/meta-llama/Llama-2-70b-chat-hf";
 

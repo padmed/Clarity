@@ -4,7 +4,7 @@
   "description": "N/A",
   "version": "0.0.1",
   "background": {
-    "service_worker": "./worker.js"
+    "service_worker": "./worker.bundle.js"
   },
   "permissions": ["scripting", "activeTab", "contextMenus"]
 }

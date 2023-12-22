@@ -1,0 +1,2 @@
+(()=>{"use strict";const t=window.getSelection();if(t.rangeCount>0){const e=t.getRangeAt(0).getBoundingClientRect();console.log("Selected text location:",{top:e.top,left:e.left,bottom:e.bottom,right:e.right})}})();
+//# sourceMappingURL=content.bundle.js.map
