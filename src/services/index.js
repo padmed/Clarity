@@ -9,21 +9,18 @@ const headers = {
   Authorization: `Bearer ${API_KEY_AI}`,
 };
 
-export const generateText = (prompt) => {
+export const generateText = async (prompt) => {
   const requestData = {
     input: `[INST] <<SYS>> You are a science communicator, your task is to read the following
             text snippet and describe its content in a simple, short, and understandable way,
             ensuring clarity for a general audience <<SYS>> ${prompt}[/INST]`,
   };
 
-  axios
-    .post(apiUrl, requestData, { headers: headers })
-    .then((response) => {
-      console.log("Response:", response.data);
-      return response.data;
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      return error;
-    });
+  try {
+    const request = await axios.post(apiUrl, requestData, { headers: headers });
+    return request.data;
+  } catch (error) {
+    console.error("Error:", error);
+    return error;
+  }
 };
