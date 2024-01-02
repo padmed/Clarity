@@ -12,7 +12,12 @@ const verticalPos = isInTop ? bottom + 10 : top - containerHeight - 10;
 const horizontalPos = (left + right) / 2 - containerWidth / 2;
 
 const popupContainer = document.createElement("div");
-popupContainer.style.cssText = `width: ${containerWidth}px;
+popupContainer.setAttribute("id", "popupContainer");
+
+popupContainer.style.cssText = `
+    transform: scale(0);
+    transition: all linear 0.2s;
+    width: ${containerWidth}px;
     height: ${containerHeight}px;
     background-color: rgba(27, 18, 18, 0.8);
     position: absolute;
@@ -23,7 +28,11 @@ popupContainer.style.cssText = `width: ${containerWidth}px;
     left: ${horizontalPos}px;
     box-shadow: 0px 0px 10px rgba(27, 18, 18, 0.7);
     color: white;
-`;
+    `;
+
+setTimeout(() => {
+  document.querySelector("#popupContainer").style.transform = "scale(1)";
+}, 100);
 
 const arrowVertPosition = isInTop ? `-10px` : "185px";
 const arrowPoint = isInTop ? -45 : 135;
