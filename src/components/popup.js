@@ -9,6 +9,9 @@ const containerWidth = 350;
 const containerHeight = 200;
 
 const verticalPos = isInTop ? bottom + 10 : top - containerHeight - 10;
+const verticalPosHidden = isInTop
+  ? verticalPos - containerHeight / 2
+  : verticalPos + containerHeight / 2;
 const horizontalPos = (left + right) / 2 - containerWidth / 2;
 
 const popupContainer = document.createElement("div");
@@ -24,15 +27,23 @@ popupContainer.style.cssText = `
     z-index: 30000;
     border-radius: 7px;
     backdrop-filter: blur(5px);
-    top: ${verticalPos}px;
+    top: ${verticalPosHidden}px;
     left: ${horizontalPos}px;
     box-shadow: 0px 0px 10px rgba(27, 18, 18, 0.7);
     color: white;
     `;
 
 setTimeout(() => {
-  document.querySelector("#popupContainer").style.transform = "scale(1)";
+  const popup = document.querySelector("#popupContainer");
+  popup.style.transform = "scale(1)";
+  popup.style.top = `${verticalPos}px`;
 }, 100);
+
+export const popupCloseAnimation = () => {
+  const popup = document.querySelector("#popupContainer");
+  popup.style.transform = `scale(0)`;
+  popup.style.top = `${verticalPosHidden}px`;
+};
 
 const arrowVertPosition = isInTop ? `-10px` : "185px";
 const arrowPoint = isInTop ? -45 : 135;
