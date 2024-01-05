@@ -1,4 +1,4 @@
-import { popupCloseAnimation } from "../components/popup";
+import { closePopupAnimation } from "./animations";
 import { getPopupContainer } from "./helpers";
 let scrollCount = 0;
 const maxScrollCount = 50;
@@ -8,7 +8,7 @@ const handlePopupClose = () => {
 
   popupContainer.style.transform = `scale(0)`;
 
-  popupCloseAnimation();
+  closePopupAnimation();
 
   setTimeout(() => {
     popupContainer.remove();
