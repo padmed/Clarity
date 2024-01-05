@@ -22,3 +22,13 @@ export const isInTopHalf = (selection) => {
     ? true
     : false;
 };
+
+export const getShadowRoot = () =>
+  document.getElementById("rootContainer").shadowRoot;
+
+export const getPopupContainer = () => {
+  const root = getShadowRoot();
+  const popup = root.querySelector("#popupContainer");
+
+  return popup;
+};

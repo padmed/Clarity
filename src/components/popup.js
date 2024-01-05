@@ -1,4 +1,8 @@
-import { getSelectionCords, isInTopHalf } from "../utils/helpers";
+import {
+  getSelectionCords,
+  getShadowRoot,
+  isInTopHalf,
+} from "../utils/helpers";
 
 const selection = window.getSelection();
 const isInTop = isInTopHalf(selection);
@@ -34,13 +38,16 @@ popupContainer.style.cssText = `
     `;
 
 setTimeout(() => {
-  const popup = document.querySelector("#popupContainer");
+  const root = getShadowRoot();
+  const popup = root.querySelector("#popupContainer");
+
   popup.style.transform = "scale(1)";
   popup.style.top = `${verticalPos}px`;
 }, 100);
 
 export const popupCloseAnimation = () => {
-  const popup = document.querySelector("#popupContainer");
+  const root = getShadowRoot();
+  const popup = root.querySelector("#popupContainer");
   popup.style.transform = `scale(0)`;
   popup.style.top = `${verticalPosHidden}px`;
 };

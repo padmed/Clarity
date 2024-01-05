@@ -1,9 +1,10 @@
 import { popupCloseAnimation } from "../components/popup";
+import { getPopupContainer } from "./helpers";
 let scrollCount = 0;
 const maxScrollCount = 50;
 
 const handlePopupClose = () => {
-  const popupContainer = document.querySelector("#popupContainer");
+  const popupContainer = getPopupContainer();
 
   popupContainer.style.transform = `scale(0)`;
 
@@ -18,7 +19,7 @@ const handlePopupClose = () => {
 };
 
 const handleEvent = (e) => {
-  const popupContainer = document.querySelector("#popupContainer");
+  const popupContainer = getPopupContainer();
 
   if (!popupContainer.contains(e.target)) {
     scrollCount++;
