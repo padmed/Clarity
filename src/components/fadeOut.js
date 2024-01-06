@@ -1,3 +1,4 @@
+// Creates the effect of a text fading out at the bottom and the top insides of a popup
 const createFadeOut = (side) => {
   const fadeOut = document.createElement("div");
 

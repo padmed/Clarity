@@ -1,7 +1,10 @@
 import { containerWidth } from "../utils/constants";
 
+// Creates arrow of a popup which points to user selection
 const createArrow = (isInTop) => {
+  // Checks whether the arrow should be on top or bottom side
   const arrowVertPosition = isInTop ? "-10px" : "185px";
+  // Rotates arrow based on where it's located
   const arrowPoint = isInTop ? -45 : 135;
 
   const arrow = document.createElement("div");

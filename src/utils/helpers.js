@@ -1,3 +1,4 @@
+// Gets coordinates of user text selection
 export const getSelectionCords = (selection) => {
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
@@ -12,6 +13,7 @@ export const getSelectionCords = (selection) => {
   }
 };
 
+// Checks whether the selection is in top or bottom half of a screen
 export const isInTopHalf = (selection) => {
   const range = selection.getRangeAt(0);
   const boundingRect = range.getBoundingClientRect();
@@ -23,9 +25,11 @@ export const isInTopHalf = (selection) => {
     : false;
 };
 
+// Returns the root of popup shadow DOM
 export const getShadowRoot = () =>
   document.getElementById("rootContainer").shadowRoot;
 
+// Returns the main container of popup
 export const getPopupContainer = () => {
   const root = getShadowRoot();
   const popup = root.querySelector("#popupContainer");

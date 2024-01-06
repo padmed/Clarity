@@ -10,12 +10,12 @@ export const openPopupAnimation = (verticalPos) => {
   }, 100);
 };
 
-export const popupCloseAnimation = () => {
-  const root = getShadowRoot();
-  const popup = root.querySelector("#popupContainer");
-  popup.style.transform = `scale(0)`;
-  popup.style.top = `${verticalPosHidden}px`;
-};
+// export const popupCloseAnimation = () => {
+//   const root = getShadowRoot();
+//   const popup = root.querySelector("#popupContainer");
+//   popup.style.transform = `scale(0)`;
+//   popup.style.top = `${verticalPosHidden}px`;
+// };
 
 export const closePopupAnimation = () => {
   const popup = getPopupContainer();

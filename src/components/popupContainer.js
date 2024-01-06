@@ -1,13 +1,11 @@
 import { popupId } from "../utils/constants";
 import { containerHeight, containerWidth } from "../utils/constants";
+import { verticalPosHidden } from "../utils/coordinates";
 
-const createPopupContainer = (verticalPos, horizontalPos, isInTop) => {
+// Creates the popup container, acts as a skeleton of a popup
+const createPopupContainer = (horizontalPos) => {
   const popupContainer = document.createElement("div");
   popupContainer.setAttribute("id", popupId);
-
-  const verticalPosHidden = isInTop
-    ? verticalPos - containerHeight / 2
-    : verticalPos + containerHeight / 2;
 
   popupContainer.style.cssText = `
     transform: scale(0);

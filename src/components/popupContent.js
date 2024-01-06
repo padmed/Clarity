@@ -1,5 +1,6 @@
 import { popupContentId } from "../utils/constants";
 
+// Creates the container for the content to fit in, this is where the generated text goes
 const createPopupContent = () => {
   const popupContent = document.createElement("p");
   popupContent.setAttribute("id", popupContentId);
