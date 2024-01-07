@@ -1,5 +1,7 @@
-import { getPopupContainer } from "./helpers";
+import { getPopupContainer, getPopupContent } from "./helpers";
 import { verticalPosHidden } from "./coordinates";
+import { loaderClassName } from "./constants";
+import createLoader from "../components/loader";
 
 export const openPopupAnimation = (verticalPos) => {
   setTimeout(() => {
@@ -10,15 +12,20 @@ export const openPopupAnimation = (verticalPos) => {
   }, 100);
 };
 
-// export const popupCloseAnimation = () => {
-//   const root = getShadowRoot();
-//   const popup = root.querySelector("#popupContainer");
-//   popup.style.transform = `scale(0)`;
-//   popup.style.top = `${verticalPosHidden}px`;
-// };
-
 export const closePopupAnimation = () => {
   const popup = getPopupContainer();
   popup.style.transform = `scale(0)`;
   popup.style.top = `${verticalPosHidden}px`;
+};
+
+export const showLoader = () => {
+  const popupContent = getPopupContent();
+  const loader = createLoader();
+  popupContent.appendChild(loader);
+};
+
+export const hideLoader = () => {
+  const popupContent = getPopupContent();
+  const loader = popupContent.querySelector(`.${loaderClassName}`);
+  loader.style.transform = "scale(0)";
 };

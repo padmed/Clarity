@@ -1,4 +1,3 @@
-import { openPopupAnimation } from "../utils/animations";
 import createArrow from "./arrow";
 import createFadeOut from "./fadeOut";
 import createPopupContainer from "./popupContainer";
@@ -17,8 +16,5 @@ popupContainer.appendChild(fadeOutBottom);
 popupContainer.appendChild(fadeOutTop);
 popupContainer.appendChild(arrow);
 popupContainer.appendChild(popupContent);
-
-// Opening a popup
-openPopupAnimation(verticalPos);
 
 export default popupContainer;

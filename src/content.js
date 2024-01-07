@@ -6,15 +6,22 @@ import {
   rootContainerId,
   loaderClassName,
 } from "./utils/constants.js";
+import { writeInPopupContent } from "./utils/helpers.js";
+import { hideLoader } from "./utils/animations.js";
+import { openPopupAnimation, showLoader } from "./utils/animations.js";
+import { verticalPos } from "./utils/coordinates.js";
 
 const selection = window.getSelection();
-// // generateText(selection.toString()).then((data) => {
-// //   const text = data.results[0].generated_text;
-// //   console.log(text);
-// // });
+setTimeout(() => {
+  hideLoader();
+  writeInPopupContent(selection.toString());
+}, 3000);
+// generateText(selection.toString()).then((data) => {
+//   hideLoader();
+//   const text = data.results[0].generated_text;
+//   writeInPopupContent(text);
+// });
 
-const popupContent = popup.querySelector(`#${popupContentId}`);
-// popupContent.innerHTML = selection.toString();
 listenPopupEvents();
 
 const rootContainer = document.createElement("div");
@@ -32,6 +39,11 @@ shadowRoot.innerHTML = `
   width: 35px;
   aspect-ratio: 1;
   display: grid;
+  transition: all linear 0.1s;
+  position: absolute;
+  top: 80px;
+  left: 160px;
+
 }
 .${loaderClassName}:before,
 .${loaderClassName}:after {
@@ -55,3 +67,7 @@ shadowRoot.innerHTML = `
   100% {transform: translate(0) rotate(calc(var(--s,1)*180deg))}
 }</style>
   ${popup.outerHTML}`;
+
+// Opening a popup
+openPopupAnimation(verticalPos);
+showLoader();
