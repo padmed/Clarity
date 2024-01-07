@@ -1,4 +1,4 @@
-import { popupContentId } from "./constants";
+import { popupContentId, loaderClassName } from "./constants";
 
 // Gets coordinates of user text selection
 export const getSelectionCords = (selection) => {
@@ -43,4 +43,20 @@ export const getPopupContent = () => {
   const root = getShadowRoot();
   const popupContent = root.querySelector(`#${popupContentId}`);
   return popupContent;
+};
+
+export const writeInPopupContent = (textToWrite) => {
+  const popupContent = getPopupContent();
+  let i = 0;
+  const speed = 20;
+
+  const typeWriter = () => {
+    if (i < textToWrite.length) {
+      popupContent.innerHTML += textToWrite.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  };
+
+  typeWriter();
 };
