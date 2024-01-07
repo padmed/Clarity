@@ -6,10 +6,14 @@ const popupId = "popupContainer";
 const popupContentId = "popupContent";
 const rootContainerId = "rootContainer";
 
+// Classnames
+const loaderClassName = "loader";
+
 export {
   containerHeight,
   containerWidth,
   popupId,
   popupContentId,
   rootContainerId,
+  loaderClassName,
 };

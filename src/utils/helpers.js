@@ -1,3 +1,5 @@
+import { popupContentId } from "./constants";
+
 // Gets coordinates of user text selection
 export const getSelectionCords = (selection) => {
   if (selection.rangeCount > 0) {
@@ -35,4 +37,10 @@ export const getPopupContainer = () => {
   const popup = root.querySelector("#popupContainer");
 
   return popup;
+};
+
+export const getPopupContent = () => {
+  const root = getShadowRoot();
+  const popupContent = root.querySelector(`#${popupContentId}`);
+  return popupContent;
 };
