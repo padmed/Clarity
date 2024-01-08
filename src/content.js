@@ -13,6 +13,12 @@ import { verticalPos } from "./utils/coordinates.js";
 //   writeInPopupContent(text);
 // });
 
+const fontLink = document.createElement("link");
+fontLink.rel = "stylesheet";
+fontLink.href =
+  "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap";
+document.head.appendChild(fontLink);
+
 const rootContainer = document.createElement("div");
 rootContainer.setAttribute("id", rootContainerId);
 document.body.insertAdjacentHTML("afterbegin", rootContainer.outerHTML);
@@ -23,7 +29,12 @@ const shadowRoot = document
 
 shadowRoot.innerHTML = `
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 /* HTML: <div class="loader"></div> */
+#popupContent{
+font-family: 'Josefin Sans', sans-serif;
+color: red;
+}
 .${loaderClassName} {
   width: 35px;
   aspect-ratio: 1;

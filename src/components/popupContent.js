@@ -1,5 +1,4 @@
 import { popupContentId } from "../utils/constants";
-import createLoader from "./loader";
 
 // Creates the container for the content to fit in, this is where the generated text goes
 const createPopupContent = () => {
@@ -13,9 +12,10 @@ const createPopupContent = () => {
     padding-left: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
-    font-size: 15px;
+    font-size: 16px;
     overflow: scroll;
     position: relative;
+    font-family: 'EB Garamond', serif;
     `;
 
   return popupContent;
