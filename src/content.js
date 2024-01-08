@@ -1,28 +1,17 @@
 import { generateText } from "./services";
 import popup from "./components/popup.js";
 import listenPopupEvents from "./utils/popupEventListeners.js";
-import {
-  popupContentId,
-  rootContainerId,
-  loaderClassName,
-} from "./utils/constants.js";
+import { rootContainerId, loaderClassName } from "./utils/constants.js";
 import { writeInPopupContent } from "./utils/helpers.js";
 import { hideLoader } from "./utils/animations.js";
 import { openPopupAnimation, showLoader } from "./utils/animations.js";
 import { verticalPos } from "./utils/coordinates.js";
 
-const selection = window.getSelection();
-setTimeout(() => {
-  hideLoader();
-  writeInPopupContent(selection.toString());
-}, 3000);
 // generateText(selection.toString()).then((data) => {
 //   hideLoader();
 //   const text = data.results[0].generated_text;
 //   writeInPopupContent(text);
 // });
-
-listenPopupEvents();
 
 const rootContainer = document.createElement("div");
 rootContainer.setAttribute("id", rootContainerId);
@@ -68,6 +57,14 @@ shadowRoot.innerHTML = `
 }</style>
   ${popup.outerHTML}`;
 
+listenPopupEvents();
+
 // Opening a popup
 openPopupAnimation(verticalPos);
 showLoader();
+
+const selection = window.getSelection();
+setTimeout(() => {
+  hideLoader();
+  writeInPopupContent(selection.toString());
+}, 3000);
