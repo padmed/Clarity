@@ -48,12 +48,16 @@ export const getPopupContent = () => {
 export const writeInPopupContent = (textToWrite) => {
   const popupContent = getPopupContent();
   let i = 0;
-  const speed = 20;
+  const speed = 2;
 
+  popupContent.innerHTML +=
+    "<h3 class='clarityHeading'><span class='left'></span>Clarified <span class='right'></span></h3>";
   const typeWriter = () => {
     if (i < textToWrite.length) {
-      popupContent.innerHTML += textToWrite.charAt(i);
+      let char = textToWrite.charAt(i);
+      popupContent.innerHTML += char;
       i++;
+
       setTimeout(typeWriter, speed);
     }
   };

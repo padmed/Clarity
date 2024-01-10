@@ -7,12 +7,6 @@ import { hideLoader } from "./utils/animations.js";
 import { openPopupAnimation, showLoader } from "./utils/animations.js";
 import { verticalPos } from "./utils/coordinates.js";
 
-// generateText(selection.toString()).then((data) => {
-//   hideLoader();
-//   const text = data.results[0].generated_text;
-//   writeInPopupContent(text);
-// });
-
 const fontLink = document.createElement("link");
 fontLink.rel = "stylesheet";
 fontLink.href =
@@ -29,6 +23,36 @@ const shadowRoot = document
 
 shadowRoot.innerHTML = `
   <style>
+  .clarityHeading {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 70px;
+    margin-bottom: 14px;
+  }
+
+  .clarityHeading span {
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  top: 15px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.clarityHeading .left {
+  width: 60px;
+  margin-left: 10px;
+  left: -80px;
+}
+
+.clarityHeading .right {
+  width: 150px;
+  margin-left: 10px;
+  left: 70px;
+}
+
   @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 /* HTML: <div class="loader"></div> */
 #popupContent{
@@ -75,7 +99,15 @@ openPopupAnimation(verticalPos);
 showLoader();
 
 const selection = window.getSelection();
+
+// generateText(selection.toString()).then((data) => {
+//   hideLoader();
+//   const text = data.results[0].generated_text;
+//   console.log(text);
+//   writeInPopupContent(text);
+// });
+
 setTimeout(() => {
   hideLoader();
   writeInPopupContent(selection.toString());
-}, 3000);
+}, 2000);

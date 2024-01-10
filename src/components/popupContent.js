@@ -12,10 +12,11 @@ const createPopupContent = () => {
     padding-left: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
-    font-size: 16px;
+    font-size: 17px;
     overflow: scroll;
     position: relative;
     font-family: 'EB Garamond', serif;
+    line-height: 22px;
     `;
 
   return popupContent;
