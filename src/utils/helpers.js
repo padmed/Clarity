@@ -1,4 +1,5 @@
 import { popupContentId, loaderClassName } from "./constants";
+import createHeading from "../components/heading";
 
 // Gets coordinates of user text selection
 export const getSelectionCords = (selection) => {
@@ -50,8 +51,8 @@ export const writeInPopupContent = (textToWrite) => {
   let i = 0;
   const speed = 2;
 
-  popupContent.innerHTML +=
-    "<h3 class='clarityHeading'><span class='left'></span>Clarified <span class='right'></span></h3>";
+  const heading = createHeading();
+  popupContent.appendChild(heading);
   const typeWriter = () => {
     if (i < textToWrite.length) {
       let char = textToWrite.charAt(i);
