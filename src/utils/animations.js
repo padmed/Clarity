@@ -3,7 +3,7 @@ import { verticalPosHidden } from "./coordinates";
 import { LOADER_CLASSNAME } from "./constants";
 import createLoader from "../components/loader";
 
-const OPEN_POPUP_DELAY = 100;
+const OPEN_POPUP_DELAY = 200;
 const HIDDEN_VERTICAL_POSITION = verticalPosHidden;
 const LOADER_SCALE = 0;
 const LOADER_SHOW_SCALE = 1;
