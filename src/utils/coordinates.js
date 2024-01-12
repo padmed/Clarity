@@ -3,7 +3,7 @@ import { CONTAINER_HEIGHT, CONTAINER_WIDTH } from "./constants";
 const selection = window.getSelection();
 
 // Gets coordinates of user text selection
-export const getSelectionCords = (selection) => {
+export const getSelectionCoords = (selection) => {
   if (selection.rangeCount > 0) {
     const range = selection.getRangeAt(0);
     const boundingRect = range.getBoundingClientRect();
@@ -24,16 +24,19 @@ export const isInTopHalf = (selection) => {
 
   const verticalMidpoint = window.innerHeight / 2;
 
-  return boundingRect.top + boundingRect.height / 2 < verticalMidpoint
-    ? true
-    : false;
+  return boundingRect.top + boundingRect.height / 2 < verticalMidpoint;
+};
+
+const calculateVerticalPos = (isInTop, top, bottom) => {
+  const offset = isInTop ? 10 : -CONTAINER_HEIGHT - 10;
+  return isInTop ? bottom + offset : top + offset;
 };
 
 const isInTop = isInTopHalf(selection);
-const { top, left, bottom, right } = getSelectionCords(selection);
+const { top, left, bottom, right } = getSelectionCoords(selection);
 
 // Vertical position when shown
-const verticalPos = isInTop ? bottom + 10 : top - CONTAINER_HEIGHT - 10;
+const verticalPos = calculateVerticalPos(isInTop, top, bottom);
 // Vertical position when hidden
 const verticalPosHidden = isInTop
   ? verticalPos - CONTAINER_HEIGHT / 2
