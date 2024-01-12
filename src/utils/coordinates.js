@@ -1,4 +1,4 @@
-import { containerHeight, containerWidth } from "./constants";
+import { CONTAINER_HEIGHT, CONTAINER_WIDTH } from "./constants";
 
 const selection = window.getSelection();
 
@@ -33,11 +33,11 @@ const isInTop = isInTopHalf(selection);
 const { top, left, bottom, right } = getSelectionCords(selection);
 
 // Vertical position when shown
-const verticalPos = isInTop ? bottom + 10 : top - containerHeight - 10;
+const verticalPos = isInTop ? bottom + 10 : top - CONTAINER_HEIGHT - 10;
 // Vertical position when hidden
 const verticalPosHidden = isInTop
-  ? verticalPos - containerHeight / 2
-  : verticalPos + containerHeight / 2;
-const horizontalPos = (left + right) / 2 - containerWidth / 2;
+  ? verticalPos - CONTAINER_HEIGHT / 2
+  : verticalPos + CONTAINER_HEIGHT / 2;
+const horizontalPos = (left + right) / 2 - CONTAINER_WIDTH / 2;
 
 export { verticalPos, verticalPosHidden, horizontalPos, isInTop };

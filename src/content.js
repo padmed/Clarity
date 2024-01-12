@@ -1,7 +1,7 @@
 import { generateText } from "./services";
 import popup from "./components/popup.js";
 import listenPopupEvents from "./utils/popupEventListeners.js";
-import { rootContainerId } from "./utils/constants.js";
+import { ROOT_CONTAINER_ID } from "./utils/constants.js";
 import { writeInPopupContent } from "./utils/writeInPopupContent.js";
 import { hideLoader } from "./utils/animations.js";
 import { openPopupAnimation, showLoader } from "./utils/animations.js";
@@ -18,14 +18,14 @@ const injectFonts = () => {
 
 const createRootContainer = () => {
   const rootContainer = document.createElement("div");
-  rootContainer.setAttribute("id", rootContainerId);
+  rootContainer.setAttribute("id", ROOT_CONTAINER_ID);
   document.body.insertAdjacentHTML("afterbegin", rootContainer.outerHTML);
 };
 
 const createShadowRoot = () => {
   const loaderStyles = getLoaderStyles();
   const shadowRoot = document
-    .getElementById(rootContainerId)
+    .getElementById(ROOT_CONTAINER_ID)
     .attachShadow({ mode: "open" });
 
   shadowRoot.innerHTML = `

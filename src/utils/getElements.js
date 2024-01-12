@@ -1,7 +1,11 @@
-import { popupContentId, rootContainerId, popupContainerId } from "./constants";
+import {
+  POPUP_CONTENT_ID,
+  ROOT_CONTAINER_ID,
+  POPUP_CONTAINER_ID,
+} from "./constants";
 
 export const getRootContainer = () => {
-  const rootContainer = document.getElementById(`${rootContainerId}`);
+  const rootContainer = document.getElementById(`${ROOT_CONTAINER_ID}`);
   if (!rootContainer) {
     console.error("Root container not found");
     return null;
@@ -33,7 +37,7 @@ export const getPopupContainer = () => {
     return null;
   }
 
-  const popup = shadowRoot.querySelector(`#${popupContainerId}`);
+  const popup = shadowRoot.querySelector(`#${POPUP_CONTAINER_ID}`);
 
   if (!popup) {
     console.error("Popup container not found");
@@ -49,7 +53,7 @@ export const getPopupContent = () => {
     return null;
   }
 
-  const popupContent = root.querySelector(`#${popupContentId}`);
+  const popupContent = root.querySelector(`#${POPUP_CONTENT_ID}`);
   if (!popupContent) {
     console.error("Popup content not found");
   }

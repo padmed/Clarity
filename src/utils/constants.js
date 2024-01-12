@@ -1,21 +1,19 @@
-const containerWidth = 350;
-const containerHeight = 200;
+const CONTAINER_WIDTH = 350;
+const CONTAINER_HEIGHT = 200;
 
 // IDs
-const popupId = "popupContainer";
-const popupContentId = "popupContent";
-const rootContainerId = "rootContainer";
-const popupContainerId = "popupContainer";
+const POPUP_CONTAINER_ID = "popupContainer";
+const POPUP_CONTENT_ID = "popupContent";
+const ROOT_CONTAINER_ID = "rootContainer";
 
 // Classnames
-const loaderClassName = "loader";
+const LOADER_CLASSNAME = "loader";
 
 export {
-  containerHeight,
-  containerWidth,
-  popupId,
-  popupContentId,
-  rootContainerId,
-  loaderClassName,
-  popupContainerId,
+  CONTAINER_WIDTH,
+  CONTAINER_HEIGHT,
+  POPUP_CONTAINER_ID,
+  POPUP_CONTENT_ID,
+  ROOT_CONTAINER_ID,
+  LOADER_CLASSNAME,
 };

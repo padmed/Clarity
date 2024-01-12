@@ -1,6 +1,6 @@
 import { getPopupContainer, getPopupContent } from "./getElements";
 import { verticalPosHidden } from "./coordinates";
-import { loaderClassName } from "./constants";
+import { LOADER_CLASSNAME } from "./constants";
 import createLoader from "../components/loader";
 
 const OPEN_POPUP_DELAY = 100;
@@ -33,7 +33,7 @@ export const showLoader = () => {
 export const hideLoader = () => {
   const popupContent = getPopupContent();
   if (popupContent) {
-    const loader = popupContent.querySelector(`.${loaderClassName}`);
+    const loader = popupContent.querySelector(`.${LOADER_CLASSNAME}`);
     loader.style.transform = `scale(${LOADER_SCALE})`;
   }
 };
