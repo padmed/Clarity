@@ -3,36 +3,37 @@ import { verticalPosHidden } from "./coordinates";
 import { loaderClassName } from "./constants";
 import createLoader from "../components/loader";
 
+const OPEN_POPUP_DELAY = 100;
+const HIDDEN_VERTICAL_POSITION = verticalPosHidden;
+const LOADER_SCALE = 0;
+const LOADER_SHOW_SCALE = 1;
+
 export const openPopupAnimation = (verticalPos) => {
   setTimeout(() => {
     const popup = getPopupContainer();
-
-    popup.style.transform = "scale(1)";
+    popup.style.transform = `scale(${LOADER_SHOW_SCALE})`;
     popup.style.top = `${verticalPos}px`;
-  }, 100);
+  }, OPEN_POPUP_DELAY);
 };
 
 export const closePopupAnimation = () => {
   const popup = getPopupContainer();
-  popup.style.transform = `scale(0)`;
-  popup.style.top = `${verticalPosHidden}px`;
+  popup.style.transform = `scale(${LOADER_SCALE})`;
+  popup.style.top = `${HIDDEN_VERTICAL_POSITION}px`;
 };
 
 export const showLoader = () => {
   const popupContent = getPopupContent();
-  const loader = createLoader();
-
-  if (!popupContent) {
-    return null;
+  if (popupContent) {
+    const loader = createLoader();
+    popupContent.appendChild(loader);
   }
-  popupContent.appendChild(loader);
 };
 
 export const hideLoader = () => {
   const popupContent = getPopupContent();
-  if (!popupContent) {
-    return null;
+  if (popupContent) {
+    const loader = popupContent.querySelector(`.${loaderClassName}`);
+    loader.style.transform = `scale(${LOADER_SCALE})`;
   }
-  const loader = popupContent.querySelector(`.${loaderClassName}`);
-  loader.style.transform = "scale(0)";
 };

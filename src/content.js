@@ -2,7 +2,7 @@ import { generateText } from "./services";
 import popup from "./components/popup.js";
 import listenPopupEvents from "./utils/popupEventListeners.js";
 import { rootContainerId } from "./utils/constants.js";
-import { writeInPopupContent } from "./utils/helpers.js";
+import { writeInPopupContent } from "./utils/writeInPopupContent.js";
 import { hideLoader } from "./utils/animations.js";
 import { openPopupAnimation, showLoader } from "./utils/animations.js";
 import { verticalPos } from "./utils/coordinates.js";
