@@ -1,4 +1,4 @@
-import { popupContentId, loaderClassName } from "./constants";
+import { getPopupContent } from "./getElements";
 import createHeading from "../components/heading";
 
 // Gets coordinates of user text selection
@@ -28,31 +28,24 @@ export const isInTopHalf = (selection) => {
     : false;
 };
 
-// Returns the root of popup shadow DOM
-export const getShadowRoot = () =>
-  document.getElementById("rootContainer").shadowRoot;
-
-// Returns the main container of popup
-export const getPopupContainer = () => {
-  const root = getShadowRoot();
-  const popup = root.querySelector("#popupContainer");
-
-  return popup;
-};
-
-export const getPopupContent = () => {
-  const root = getShadowRoot();
-  const popupContent = root.querySelector(`#${popupContentId}`);
-  return popupContent;
-};
-
 export const writeInPopupContent = (textToWrite) => {
   const popupContent = getPopupContent();
+  if (!popupContent) {
+    console.error("Popup content not found");
+    return;
+  }
+
   let i = 0;
   const speed = 2;
 
   const heading = createHeading();
+  if (!heading) {
+    console.error("Failed to create heading");
+    return;
+  }
+
   popupContent.appendChild(heading);
+
   const typeWriter = () => {
     if (i < textToWrite.length) {
       let char = textToWrite.charAt(i);

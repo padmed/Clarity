@@ -1,5 +1,9 @@
 import { closePopupAnimation } from "./animations";
-import { getPopupContainer, getShadowRoot } from "./helpers";
+import {
+  getPopupContainer,
+  getRootContainer,
+  getShadowRoot,
+} from "./getElements";
 
 let isMouseInside = false;
 // Counter for smooth popup close
@@ -7,13 +11,14 @@ let scrollCount = 0;
 const maxScrollCount = 50;
 
 const handlePopupClose = () => {
+  const rootContainer = getRootContainer();
   const popupContainer = getPopupContainer();
 
   closePopupAnimation();
 
   // Removes popup from DOM
   setTimeout(() => {
-    popupContainer.remove();
+    rootContainer.remove();
   }, 200);
 
   // Removing all the listeners

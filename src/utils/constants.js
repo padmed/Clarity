@@ -5,6 +5,7 @@ const containerHeight = 200;
 const popupId = "popupContainer";
 const popupContentId = "popupContent";
 const rootContainerId = "rootContainer";
+const popupContainerId = "popupContainer";
 
 // Classnames
 const loaderClassName = "loader";
@@ -16,4 +17,5 @@ export {
   popupContentId,
   rootContainerId,
   loaderClassName,
+  popupContainerId,
 };
