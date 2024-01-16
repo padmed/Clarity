@@ -14,7 +14,7 @@ const createHeadingDecoration = (style) => {
 
 const createHeading = () => {
   const heading = document.createElement("h3");
-  heading.innerText = "Simplified";
+  heading.innerText = "Clarified";
   heading.style.cssText = `
     margin: 0;
     padding: 0;

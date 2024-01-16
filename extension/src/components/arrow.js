@@ -14,7 +14,7 @@ const createArrow = (isInTop) => {
     height: 25px;
     background: rgb(238,174,202);
     background: linear-gradient(45deg, rgba(238,174,202,0) 55%, rgba(27, 18, 18, 0.8) 58%);
-    left: ${CONTAINER_WIDTH / 2}px;
+    left: ${CONTAINER_WIDTH / 2 - 5}px;
     top: ${arrowVertPosition};
     transform: rotate(${arrowPoint}deg);
     border-radius: 5px;
