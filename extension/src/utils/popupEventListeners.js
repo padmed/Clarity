@@ -10,7 +10,7 @@ let isMouseInside = false;
 let scrollCount = 0;
 const maxScrollCount = 50;
 
-const handlePopupClose = () => {
+export const handlePopupClose = () => {
   const rootContainer = getRootContainer();
   const popupContainer = getPopupContainer();
 

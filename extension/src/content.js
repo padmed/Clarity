@@ -1,59 +1,46 @@
 import { generateText } from "./services";
-import popup from "./components/popup.js";
-import listenPopupEvents from "./utils/popupEventListeners.js";
-import { ROOT_CONTAINER_ID } from "./utils/constants.js";
+import listenPopupEvents, {
+  handlePopupClose,
+} from "./utils/popupEventListeners.js";
 import { writeInPopupContent } from "./utils/writeInPopupContent.js";
 import { hideLoader } from "./utils/animations.js";
 import { openPopupAnimation, showLoader } from "./utils/animations.js";
 import { verticalPos } from "./utils/coordinates.js";
-import { getLoaderStyles } from "./components/loader.js";
+import { getRootContainer } from "./utils/getElements.js";
+import { createRootContainer, createShadowRoot } from "./components/root.js";
+import { injectFonts } from "./utils/injectInDom.js";
 
-const injectFonts = () => {
-  const fontLink = document.createElement("link");
-  fontLink.rel = "stylesheet";
-  fontLink.href =
-    "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap";
-  document.head.appendChild(fontLink);
+const initApp = () => {
+  if (getRootContainer()) {
+    handlePopupClose();
+  }
+  injectFonts();
+  createRootContainer();
+  createShadowRoot();
+  listenPopupEvents();
+
+  // Opening a popup
+  openPopupAnimation(verticalPos);
+  showLoader();
 };
 
-const createRootContainer = () => {
-  const rootContainer = document.createElement("div");
-  rootContainer.setAttribute("id", ROOT_CONTAINER_ID);
-  document.body.insertAdjacentHTML("afterbegin", rootContainer.outerHTML);
-};
-
-const createShadowRoot = () => {
-  const loaderStyles = getLoaderStyles();
-  const shadowRoot = document
-    .getElementById(ROOT_CONTAINER_ID)
-    .attachShadow({ mode: "open" });
-
-  shadowRoot.innerHTML = `
-  <style>
-  ${loaderStyles}
- </style>
-  ${popup.outerHTML}`;
-};
-
-injectFonts();
-createRootContainer();
-createShadowRoot();
-listenPopupEvents();
-
-// Opening a popup
-openPopupAnimation(verticalPos);
-showLoader();
-
+initApp();
 const selection = window.getSelection();
 
-// generateText(selection.toString()).then((data) => {
+// setTimeout(() => {
 //   hideLoader();
-//   const text = data.results[0].generated_text;
-//   console.log(text);
-//   writeInPopupContent(text);
-// });
+//   writeInPopupContent(selection.toString());
+// }, 2000);
 
-setTimeout(() => {
-  hideLoader();
-  writeInPopupContent(selection.toString());
-}, 2000);
+generateText(selection.toString())
+  .then((data) => {
+    hideLoader();
+    const text = data.results[0].generated_text;
+    writeInPopupContent(text);
+  })
+  .catch((e) => {
+    hideLoader();
+    const text = "Temporary out of service";
+    writeInPopupContent(text);
+    console.error(e);
+  });
