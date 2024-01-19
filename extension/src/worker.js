@@ -1,14 +1,14 @@
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason !== "install" && details.reason !== "update") return;
   chrome.contextMenus.create({
-    title: "Clarifai",
+    title: "Clarity",
     contexts: ["selection"],
     id: "clarifai",
   });
 });
 
 chrome.contextMenus.onClicked.addListener(async (details) => {
-  if (details.menuItemId === "clarifai") {
+  if (details.menuItemId === "Clarity") {
     const [tab] = await chrome.tabs.query({
       active: true,
       lastFocusedWindow: true,
