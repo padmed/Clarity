@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener((details) => {
   chrome.contextMenus.create({
     title: "Clarity",
     contexts: ["selection"],
-    id: "clarifai",
+    id: "Clarity",
   });
 });
 
