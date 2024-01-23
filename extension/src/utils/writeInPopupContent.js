@@ -1,10 +1,11 @@
 import { getPopupContent } from "./getElements";
 import createHeading from "../components/heading";
+import logger from "./logger";
 
 export const writeInPopupContent = (textToWrite) => {
   const popupContent = getPopupContent();
   if (!popupContent) {
-    console.error("Popup content not found");
+    logger.error("Popup content not found");
     return;
   }
 
@@ -13,7 +14,7 @@ export const writeInPopupContent = (textToWrite) => {
 
   const heading = createHeading();
   if (!heading) {
-    console.error("Failed to create heading");
+    logger.error("Failed to create heading");
     return;
   }
 

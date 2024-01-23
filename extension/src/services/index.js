@@ -1,4 +1,5 @@
 import axios from "axios";
+import logger from "../utils/logger";
 
 const API_KEY_AI = "40xWby26Fb2w295NMSXdJRtWbVsgWqgd";
 const apiUrl =
@@ -20,7 +21,7 @@ export const generateText = async (prompt) => {
     const request = await axios.post(apiUrl, requestData, { headers: headers });
     return request.data;
   } catch (error) {
-    console.error("Error:", error);
+    logger.error("Error:", error);
     return error;
   }
 };

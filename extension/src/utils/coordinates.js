@@ -33,7 +33,6 @@ const calculateVerticalPos = (isInTop, top, bottom) => {
   const viewportEndY = viewportStartY + window.innerHeight;
   const exceedsBottom = viewportEndY < bottom + CONTAINER_HEIGHT;
   const exceedsTop = viewportStartY > top - CONTAINER_HEIGHT;
-  console.log(top + CONTAINER_HEIGHT);
 
   // Don't know what's happening here but it works
   if (exceedsBottom && isInTop) {
@@ -54,9 +53,6 @@ const { top, left, bottom, right } = getSelectionCoords(selection);
 // Vertical position when shown
 const verticalPos = calculateVerticalPos(isInTop, top, bottom);
 
-// console.log(viewportStartY, "viewport start");
-// console.log(top, "top", bottom, "bottom");
-// console.log(verticalPos, "popover position");
 // Vertical position when hidden
 const verticalPosHidden = isInTop
   ? verticalPos - CONTAINER_HEIGHT / 2

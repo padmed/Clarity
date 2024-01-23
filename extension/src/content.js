@@ -9,6 +9,7 @@ import { verticalPos } from "./utils/coordinates.js";
 import { getRootContainer } from "./utils/getElements.js";
 import { createRootContainer, createShadowRoot } from "./components/root.js";
 import { injectFonts } from "./utils/injectInDom.js";
+import logger from "./utils/logger.js";
 
 const initApp = () => {
   if (getRootContainer()) {
@@ -42,5 +43,5 @@ generateText(selection.toString())
     hideLoader();
     const text = "Temporary out of service";
     writeInPopupContent(text);
-    console.error(e);
+    logger.error(e);
   });

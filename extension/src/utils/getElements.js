@@ -1,3 +1,4 @@
+import logger from "./logger";
 import {
   POPUP_CONTENT_ID,
   ROOT_CONTAINER_ID,
@@ -8,7 +9,7 @@ import {
 const getElementByIdInRoot = (root, id, errorMessage) => {
   const element = root.getElementById(id);
   if (!element) {
-    console.error(errorMessage);
+    logger.error(errorMessage);
   }
   return element;
 };
@@ -17,7 +18,7 @@ const getElementByIdInRoot = (root, id, errorMessage) => {
 export const getRootContainer = () => {
   const rootContainer = document.getElementById(ROOT_CONTAINER_ID);
   if (!rootContainer) {
-    console.error("Root container not found");
+    logger.error("Root container not found");
     return null;
   }
 
