@@ -1,1 +1,1 @@
-<h1>Clarity - Text Simplfier</h1>
+<h1>#Clarity - Text Simplfier</h1>
