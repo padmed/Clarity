@@ -1,5 +1,4 @@
 # Clarity - Text Simplfier
----
 This is Clarity, a Chrome extension that simplifies complex text with a simle click.
 
 
