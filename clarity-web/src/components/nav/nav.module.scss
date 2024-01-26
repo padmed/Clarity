@@ -1,4 +1,23 @@
 .nav {
   background-color: var(--bg-color-secondary);
-  height: 66px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 15px 50px;
+  position: relative;
+}
+
+.waveBg {
+  position: absolute;
+  right: -350px;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav {
+    justify-content: center; /* Center the content on mobile */
+  }
+
+  .waveBg {
+    display: none; /* Hide the wave background on mobile */
+  }
 }
