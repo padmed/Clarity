@@ -1,0 +1,42 @@
+.mainLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - var(--nav-height));
+}
+
+.signinContainer {
+  width: 570px;
+  height: 382px;
+  border: 1px solid var(--text);
+  border-radius: 3px;
+  background-color: var(--bg-color-secondary);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: var(--text);
+  margin: 20px;
+}
+
+.heading {
+  font-size: 37px;
+  margin-top: 80px;
+}
+
+.subHeading {
+  margin-top: 18px;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 600px) {
+  .signinContainer {
+    width: 420px;
+  }
+  .heading {
+    font-size: 30px;
+  }
+
+  .subHeading {
+    font-size: 17px;
+  }
+}

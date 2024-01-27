@@ -1,9 +1,11 @@
 import Nav from "@/components/nav/Nav";
+import styles from "./onboarding.module.scss";
+
 export default function Layout({ children }) {
   return (
-    <div>
+    <>
       <Nav />
-      <div>{children}</div>
-    </div>
+      <main className={styles.mainLayout}>{children}</main>
+    </>
   );
 }
