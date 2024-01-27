@@ -1,13 +1,14 @@
 :root {
+  /* colors */
   --bg-color-primary: #242424;
   --bg-color-secondary: #1f1e1e;
   --text: #ffffff;
+
+  /* constant sizes */
+  --nav-height: 60px;
 }
 
-.miau {
-  background-color: #64ff00;
-}
-
-.body {
-  background-color: #64ff00;
+html,
+body {
+  height: 100%;
 }
