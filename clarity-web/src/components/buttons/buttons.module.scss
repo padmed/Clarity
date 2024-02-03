@@ -12,6 +12,14 @@
   justify-content: space-between;
   padding-right: 25px;
   padding-left: 15px;
+
+  &:hover {
+    background-color: var(--red-darker);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .line {
