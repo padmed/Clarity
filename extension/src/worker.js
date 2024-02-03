@@ -22,3 +22,10 @@ chrome.contextMenus.onClicked.addListener(async (details) => {
       .then(() => console.log("script injected in all frames"));
   }
 });
+
+chrome.runtime.onMessageExternal.addListener(
+  (request, sender, sendResponse) => {
+    // if (sender.url === blocklistedWebsite) return; // don't allow this web page access
+    console.log(request.message);
+  }
+);
