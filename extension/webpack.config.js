@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    content: "./src/content.js",
+    content: "./src/popup/content.js",
     worker: "./src/worker.js",
   },
   output: {

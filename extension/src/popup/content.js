@@ -1,4 +1,4 @@
-import { generateText } from "./services";
+import { generateText } from "./services/index.js";
 import listenPopupEvents, {
   handlePopupClose,
 } from "./utils/popupEventListeners.js";
