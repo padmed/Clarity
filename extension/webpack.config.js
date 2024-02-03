@@ -1,5 +1,6 @@
 // webpack.config.js
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -22,4 +23,18 @@ module.exports = {
     ],
   },
   devtool: "source-map",
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "./src/public/manifest.json",
+          to: path.resolve(__dirname, "dist"),
+        },
+        {
+          from: "./src/public/icons",
+          to: path.resolve(__dirname, "dist/icons"),
+        },
+      ],
+    }),
+  ],
 };
