@@ -9,11 +9,19 @@
     "48": "./icons/Icon48.png",
     "128": "./icons/Icon128.png"
   },
-  "background": {
-    "service_worker": "./worker.bundle.js"
-  },
-  "permissions": ["scripting", "activeTab", "contextMenus"],
-  "externally_connectable": {
-    "matches": ["<all_urls>"]
+  "action": {
+    "default_icon": {
+      "16": "./icons/Icon16.png",
+      "24": "./icons/Icon24.png",
+      "32": "./icons/Icon32.png"
+    },
+    "default_title": "Clarity - Text Simplifier",
+    "background": {
+      "service_worker": "./worker.bundle.js"
+    },
+    "permissions": ["scripting", "activeTab", "contextMenus"],
+    "externally_connectable": {
+      "matches": ["<all_urls>"]
+    }
   }
 }
