@@ -15,10 +15,11 @@
       "24": "./icons/Icon24.png",
       "32": "./icons/Icon32.png"
     },
-    "default_title": "Clarity - Text Simplifier"
+    "default_title": "Clarity - Text Simplifier",
+    "default_popup": "./actionMenu/index.html"
   },
   "background": {
-    "service_worker": "./worker.bundle.js"
+    "service_worker": "./worker/index.js"
   },
   "permissions": ["scripting", "activeTab", "contextMenus"],
   "externally_connectable": {

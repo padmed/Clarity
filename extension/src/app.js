@@ -17,7 +17,7 @@ chrome.contextMenus.onClicked.addListener(async (details) => {
     chrome.scripting
       .executeScript({
         target: { tabId: tab.id },
-        files: ["./content.bundle.js"],
+        files: ["./content/index.js"],
       })
       .then(() => console.log("script injected in all frames"));
   }
