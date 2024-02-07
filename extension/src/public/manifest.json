@@ -21,7 +21,18 @@
   "background": {
     "service_worker": "./worker/index.js"
   },
-  "permissions": ["scripting", "activeTab", "contextMenus"],
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "contextMenus",
+    "identity",
+    "identity.email"
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApiF+D9QcRsgOuH177RTXI9aIwXi8X4G687f0oVfAQMJAYqOK3g4iiGp9BaIA+KDBc4CMswFD1shnCCamxVG/Hr1GPQl1tdNrtCro7zGT3Ts444IV1TNI+D39ep4YnZyCxVLzpn9mlR2KkG4ztxKZCuwayBN+LmbMD9/GMeKBFWfPuBetXHzoXsMoSw4tpQB0XAHK87wWKbQhZ+nYrET1oOzUWclS8vXhykDnuu5DUqdVEdWhQjypidO5z1MeqlDjAAHdRj4N8sGL60xdNxneqk+yQabAaSV5YFqTyGoEVbPP2Zowk/zWDrQZztOzxuQ3nrFlkWVasgDe2/p4J0YY6QIDAQAB",
+  "oauth2": {
+    "client_id": "939648216160-mrd2b0h2h9v9gunoprk8dp6rhni2540h.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
+  },
   "externally_connectable": {
     "matches": ["<all_urls>"]
   }
