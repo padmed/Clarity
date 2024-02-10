@@ -19,7 +19,7 @@
     "default_popup": "./actionMenu/index.html"
   },
   "background": {
-    "service_worker": "./worker/index.js"
+    "service_worker": "./worker/worker.index.js"
   },
   "permissions": [
     "scripting",

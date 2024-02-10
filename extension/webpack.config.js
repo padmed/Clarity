@@ -9,7 +9,7 @@ module.exports = {
     actionMenu: "./src/actionMenu/index.js",
   },
   output: {
-    filename: "[name]/index.js",
+    filename: "[name]/[name].index.js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
@@ -30,10 +30,6 @@ module.exports = {
         {
           from: "./src/public/manifest.json",
           to: path.resolve(__dirname, "dist"),
-        },
-        {
-          from: "./src/public/icons",
-          to: path.resolve(__dirname, "dist/icons"),
         },
         {
           from: "./src/public/icons",
