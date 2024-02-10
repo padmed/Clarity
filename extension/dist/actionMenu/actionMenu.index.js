@@ -1,0 +1,2 @@
+(()=>{const e=document.querySelector(".buttonSignin"),t=document.querySelector(".buttonSignout");e.addEventListener("click",(e=>{chrome.runtime.sendMessage({message:"signInRequest"})})),t.addEventListener("click",(e=>{chrome.runtime.sendMessage({message:"logOutRequest"})}))})();
+//# sourceMappingURL=actionMenu.index.js.map
