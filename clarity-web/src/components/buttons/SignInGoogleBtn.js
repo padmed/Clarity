@@ -4,11 +4,11 @@ import Image from "next/image";
 
 const SignInGoogleBtn = () => {
   const handleClick = () => {
-    const clarityExtensionId = "fbchmbkgldaidfgopdemgacpjnbcokhj";
+    const clarityExtensionId = "mfbigjpknmeflcogckmjhpghdjbfpmle";
 
     chrome.runtime.sendMessage(
       clarityExtensionId,
-      { message: "hello" },
+      { message: "signInRequest" },
       function (response) {
         if (!response.success) console.log("error");
       }
