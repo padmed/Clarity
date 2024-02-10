@@ -1,31 +1,51 @@
-chrome.runtime.onInstalled.addListener((details) => {
-  if (details.reason !== "install" && details.reason !== "update") return;
+import { logInRequest, logOutRequest } from "./oAuth";
+
+const createContextMenu = () => {
   chrome.contextMenus.create({
     title: "Clarity",
     contexts: ["selection"],
-    id: "Clarity",
+    id: "mfbigjpknmeflcogckmjhpghdjbfpmle",
   });
-});
+};
 
-chrome.contextMenus.onClicked.addListener(async (details) => {
-  if (details.menuItemId === "Clarity") {
+const handleOnInstalled = (details) => {
+  if (details.reason !== "install" && details.reason !== "update") return;
+  createContextMenu();
+  const externalUrl = "http://localhost:3000/onboarding/signin";
+  chrome.tabs.create({ url: externalUrl }, (tab) => {
+    console.log("New tab launched with http://localhost:3000/");
+  });
+};
+
+const handleMessages = async (request, sender, sendResponse) => {
+  if (request.message === "signInRequest") {
+    const response = await logInRequest();
+    console.log(response);
+  } else if (request.message === "logOutRequest") {
+    const response = await logOutRequest();
+    console.log(response);
+  }
+};
+
+const onContextMenuClicked = async (details) => {
+  if (details.menuItemId === "mfbigjpknmeflcogckmjhpghdjbfpmle") {
     const [tab] = await chrome.tabs.query({
       active: true,
       lastFocusedWindow: true,
     });
 
-    chrome.scripting
-      .executeScript({
-        target: { tabId: tab.id },
-        files: ["./content/index.js"],
-      })
-      .then(() => console.log("script injected in all frames"));
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["./content/index.js"],
+    });
   }
-});
+};
 
-chrome.runtime.onMessageExternal.addListener(
-  (request, sender, sendResponse) => {
-    // if (sender.url === blocklistedWebsite) return; // don't allow this web page access
-    console.log(request.message);
-  }
-);
+const main = async () => {
+  chrome.runtime.onInstalled.addListener(handleOnInstalled);
+  chrome.contextMenus.onClicked.addListener(onContextMenuClicked);
+  chrome.runtime.onMessageExternal.addListener(handleMessages);
+  chrome.runtime.onMessage.addListener(handleMessages);
+};
+
+main();
