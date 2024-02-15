@@ -19,16 +19,16 @@ const handleOnInstalled = (details) => {
 
 const handleOnStartup = async () => {
   const userData = await chrome.storage.sync.get(["userData"]);
-  console.log(miau);
+  console.log(userData);
 };
 
 const handleMessages = async (request, sender, sendResponse) => {
   if (request.message === "signInRequest") {
-    const response = await user.login();
-    console.log(response);
+    await user.login();
+    await chrome.storage.sync.set({ userData: user.userData });
   } else if (request.message === "logOutRequest") {
-    const response = await user.logout();
-    console.log(response);
+    await user.logout();
+    await chrome.storage.sync.set({ userData: null });
   }
 };
 

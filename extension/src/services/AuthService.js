@@ -17,9 +17,8 @@ class AuthService {
       // Step 3: Send login request with user credentials
       const userData = await this.sendLoginRequest(userCreds);
 
-      // Step 4: Update user properties and save to storage
+      // Step 4: Update user properties
       this.updateUserProps(userData);
-      await this.saveUserDataToStorage();
 
       return this.userData;
     } catch (error) {
@@ -44,23 +43,14 @@ class AuthService {
         console.log("No token found");
       }
 
-      // Step 4: Clear user properties and remove data from storage
+      // Step 4: Clear user properties
       this.updateUserProps(null);
-      await this.clearUserDataFromStorage();
 
       return { response: "ok" };
     } catch (error) {
       console.error("Logout error:", error);
       throw error;
     }
-  }
-
-  async saveUserDataToStorage() {
-    await chrome.storage.sync.set({ userData: this.userData });
-  }
-
-  async clearUserDataFromStorage() {
-    await chrome.storage.sync.set({ userData: null });
   }
 
   async getAuthToken(interactive) {
