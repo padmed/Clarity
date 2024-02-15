@@ -12,12 +12,16 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   freeTrial: {
-    type: Object,
-    required: true,
-  },
-  tokens: {
-    type: Number,
-    required: true,
+    access: {
+      type: Boolean,
+      default: true,
+      required: true,
+    },
+    tokens: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
   },
 });
 
