@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const User = require("./db/models/user");
 const cors = require("cors");
+const generateText = require("./services/llmAI");
 
 const corsOptions = {
   origin: "chrome-extension://mfbigjpknmeflcogckmjhpghdjbfpmle",
@@ -27,7 +28,7 @@ app.post("/api/signin", async (req, res) => {
     }
   } catch (error) {
     console.error("Error while signing in:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ "Internal Server Error": error });
   }
 });
 
@@ -38,7 +39,18 @@ app.get("/api/users", async (req, res) => {
     return res.status(200).json(users);
   } catch (error) {
     console.error("Error while fetching users:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ "Internal Server Error": error });
+  }
+});
+
+app.post("/api/ai/generate", async (req, res) => {
+  try {
+    const { prompt } = req.body;
+    const generatedText = await generateText(prompt);
+    return res.status(201).json(generatedText);
+  } catch (error) {
+    console.error("Error:", error);
+    return res.status(500).json({ "Error while generating text:": error });
   }
 });
 
