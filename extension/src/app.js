@@ -1,4 +1,6 @@
-import { logInRequest, logOutRequest } from "./oAuth";
+import AuthService from "./oAuth";
+
+const user = new AuthService();
 
 const createContextMenu = () => {
   chrome.contextMenus.create({
@@ -19,10 +21,10 @@ const handleOnInstalled = (details) => {
 
 const handleMessages = async (request, sender, sendResponse) => {
   if (request.message === "signInRequest") {
-    const response = await logInRequest();
+    const response = await user.login();
     console.log(response);
   } else if (request.message === "logOutRequest") {
-    const response = await logOutRequest();
+    const response = await user.logout();
     console.log(response);
   }
 };

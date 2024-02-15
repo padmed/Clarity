@@ -1,66 +1,101 @@
-const getAuthToken = (interactive) => {
-  return new Promise((resolve, reject) => {
-    chrome.identity.getAuthToken({ interactive: interactive }, (token) => {
-      if (chrome.runtime.lastError) {
-        reject(chrome.runtime.lastError);
+class AuthService {
+  constructor() {
+    this.user = null;
+  }
+
+  async login() {
+    try {
+      const token = await this.getAuthToken(true);
+      const userCreds = await this.getUserCreditentials(token);
+      const userData = await this.sendLoginRequest(userCreds);
+      this.user = userData;
+      return this.user;
+    } catch (error) {
+      console.error("Login error:", error);
+      throw error;
+    }
+  }
+
+  async logout() {
+    try {
+      const token = await this.getAuthToken(false);
+      if (token) {
+        await this.removeCachedAuthToken(token);
+        await this.revokeToken(token);
+        console.log("Logged out successfully");
       } else {
-        resolve(token);
+        console.log("No token found");
       }
-    });
-  });
-};
+      this.user = null;
+      return { response: "ok" };
+    } catch (error) {
+      console.error("Logout error:", error);
+      throw error;
+    }
+  }
 
-const removeCachedAuthToken = (token) => {
-  return new Promise((resolve, reject) => {
-    chrome.identity.removeCachedAuthToken({ token: token }, () => {
-      if (!chrome.runtime.lastError) {
-        resolve();
-      } else {
-        reject(chrome.runtime.lastError);
+  async getAuthToken(interactive) {
+    return new Promise((resolve, reject) => {
+      chrome.identity.getAuthToken({ interactive: interactive }, (token) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(token);
+        }
+      });
+    });
+  }
+
+  async removeCachedAuthToken(token) {
+    return new Promise((resolve, reject) => {
+      chrome.identity.removeCachedAuthToken({ token: token }, () => {
+        if (!chrome.runtime.lastError) {
+          resolve();
+        } else {
+          reject(chrome.runtime.lastError);
+        }
+      });
+    });
+  }
+
+  async revokeToken(token) {
+    const response = await fetch(
+      "https://accounts.google.com/o/oauth2/revoke?token=" + token,
+      {
+        method: "GET",
       }
-    });
-  });
-};
+    );
+    if (!response.ok) {
+      console.error("Error revoking token:", response.statusText);
+    }
+  }
 
-const revokeToken = (token) => {
-  return fetch("https://accounts.google.com/o/oauth2/revoke?token=" + token, {
-    method: "GET",
-  });
-};
-
-const logInRequest = async () => {
-  try {
-    const token = await getAuthToken(true);
+  async getUserCreditentials(token) {
     const response = await fetch(
       "https://www.googleapis.com/oauth2/v3/userinfo?access_token=" + token
     );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Fetch error:", error);
-    throw error;
-  }
-};
-
-const logOutRequest = async () => {
-  try {
-    const token = await getAuthToken(false);
-    if (token) {
-      await removeCachedAuthToken(token);
-      const response = await revokeToken(token);
-      if (response.ok) {
-        console.log("Token revoked successfully");
-        return response;
-      } else {
-        console.error("Error revoking token:", response.statusText);
-      }
-    } else {
-      console.log("No token found");
+    if (!response.ok) {
+      throw new Error("Failed to fetch user data");
     }
-  } catch (error) {
-    console.error("Error logging out:", error);
-    return { ok: false };
+    return await response.json();
   }
-};
 
-export { logInRequest, logOutRequest };
+  async sendLoginRequest(user) {
+    const data = JSON.stringify(user);
+    const response = await fetch("http://localhost:3001/api/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+    if (!response.ok) {
+      console.error("Login request failed:", response.status);
+      throw new Error("Login request failed");
+    }
+
+    return await response.json();
+  }
+}
+
+export default AuthService;
