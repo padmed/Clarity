@@ -1,5 +1,4 @@
 import user from "./services/AuthService";
-import generateText from "./services/AiService";
 
 const createContextMenu = () => {
   chrome.contextMenus.create({
@@ -16,6 +15,11 @@ const handleOnInstalled = (details) => {
   chrome.tabs.create({ url: externalUrl }, (tab) => {
     console.log("New tab launched with http://localhost:3000/");
   });
+};
+
+const handleOnStartup = async () => {
+  const userData = await chrome.storage.sync.get(["userData"]);
+  console.log(miau);
 };
 
 const handleMessages = async (request, sender, sendResponse) => {
@@ -44,6 +48,7 @@ const onContextMenuClicked = async (details) => {
 
 const main = async () => {
   chrome.runtime.onInstalled.addListener(handleOnInstalled);
+  chrome.runtime.onStartup.addListener(handleOnStartup);
   chrome.contextMenus.onClicked.addListener(onContextMenuClicked);
   chrome.runtime.onMessageExternal.addListener(handleMessages);
   chrome.runtime.onMessage.addListener(handleMessages);
