@@ -26,7 +26,8 @@
     "activeTab",
     "contextMenus",
     "identity",
-    "identity.email"
+    "identity.email",
+    "storage"
   ],
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApiF+D9QcRsgOuH177RTXI9aIwXi8X4G687f0oVfAQMJAYqOK3g4iiGp9BaIA+KDBc4CMswFD1shnCCamxVG/Hr1GPQl1tdNrtCro7zGT3Ts444IV1TNI+D39ep4YnZyCxVLzpn9mlR2KkG4ztxKZCuwayBN+LmbMD9/GMeKBFWfPuBetXHzoXsMoSw4tpQB0XAHK87wWKbQhZ+nYrET1oOzUWclS8vXhykDnuu5DUqdVEdWhQjypidO5z1MeqlDjAAHdRj4N8sGL60xdNxneqk+yQabAaSV5YFqTyGoEVbPP2Zowk/zWDrQZztOzxuQ3nrFlkWVasgDe2/p4J0YY6QIDAQAB",
   "oauth2": {

@@ -8,10 +8,19 @@ class AuthService {
 
   async login() {
     try {
+      // Step 1: Get authentication token
       const token = await this.getAuthToken(true);
-      const userCreds = await this.getUserCreditentials(token);
+
+      // Step 2: Get user credentials using the token
+      const userCreds = await this.getUserCredentials(token);
+
+      // Step 3: Send login request with user credentials
       const userData = await this.sendLoginRequest(userCreds);
+
+      // Step 4: Update user properties and save to storage
       this.updateUserProps(userData);
+      await this.saveUserDataToStorage();
+
       return this.userData;
     } catch (error) {
       console.error("Login error:", error);
@@ -21,20 +30,37 @@ class AuthService {
 
   async logout() {
     try {
+      // Step 1: Get authentication token
       const token = await this.getAuthToken(false);
+
       if (token) {
+        // Step 2: Remove cached authentication token
         await this.removeCachedAuthToken(token);
+
+        // Step 3: Revoke token
         await this.revokeToken(token);
         console.log("Logged out successfully");
       } else {
         console.log("No token found");
       }
+
+      // Step 4: Clear user properties and remove data from storage
       this.updateUserProps(null);
+      await this.clearUserDataFromStorage();
+
       return { response: "ok" };
     } catch (error) {
       console.error("Logout error:", error);
       throw error;
     }
+  }
+
+  async saveUserDataToStorage() {
+    await chrome.storage.sync.set({ userData: this.userData });
+  }
+
+  async clearUserDataFromStorage() {
+    await chrome.storage.sync.set({ userData: null });
   }
 
   async getAuthToken(interactive) {
@@ -73,7 +99,7 @@ class AuthService {
     }
   }
 
-  async getUserCreditentials(token) {
+  async getUserCredentials(token) {
     const response = await fetch(
       "https://www.googleapis.com/oauth2/v3/userinfo?access_token=" + token
     );
