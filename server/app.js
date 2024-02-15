@@ -1,7 +1,15 @@
 const express = require("express");
 const app = express();
 const User = require("./db/models/user");
+const cors = require("cors");
 
+const corsOptions = {
+  origin: "chrome-extension://mfbigjpknmeflcogckmjhpghdjbfpmle",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Sign-in route
@@ -12,8 +20,7 @@ app.post("/api/signin", async (req, res) => {
     if (user) {
       return res.status(202).json(user);
     } else {
-      const tokens = 0;
-      user = new User({ email, picture, tokens });
+      user = new User({ email, picture });
       await user.save();
       console.log("New user saved:", user);
       return res.status(201).json(user);
