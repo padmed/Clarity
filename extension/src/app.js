@@ -1,6 +1,5 @@
-import AuthService from "./services/AuthService";
-
-const user = new AuthService();
+import user from "./services/AuthService";
+import generateText from "./services/AiService";
 
 const createContextMenu = () => {
   chrome.contextMenus.create({
@@ -38,7 +37,7 @@ const onContextMenuClicked = async (details) => {
 
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ["./content/index.js"],
+      files: ["./content/content.index.js"],
     });
   }
 };
