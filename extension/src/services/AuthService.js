@@ -20,6 +20,7 @@ class AuthService {
       // Step 4: Update user properties
       this.updateUserProps(userData);
 
+      console.log("Logged in successfully");
       return this.userData;
     } catch (error) {
       console.error("Login error:", error);
