@@ -28,11 +28,6 @@ const initApp = () => {
 initApp();
 const selection = window.getSelection();
 
-// setTimeout(() => {
-//   hideLoader();
-//   writeInPopupContent(selection.toString());
-// }, 2000);
-
 generateText(selection.toString())
   .then((data) => {
     hideLoader();

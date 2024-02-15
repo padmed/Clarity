@@ -1,4 +1,4 @@
-import AuthService from "./oAuth";
+import AuthService from "./services/AuthService";
 
 const user = new AuthService();
 
