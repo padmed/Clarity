@@ -1,6 +1,9 @@
 class AuthService {
   constructor() {
-    this.user = null;
+    this.userData = null;
+    this.email = null;
+    this.picture = null;
+    this.freeTrial = null;
   }
 
   async login() {
@@ -8,8 +11,8 @@ class AuthService {
       const token = await this.getAuthToken(true);
       const userCreds = await this.getUserCreditentials(token);
       const userData = await this.sendLoginRequest(userCreds);
-      this.user = userData;
-      return this.user;
+      this.updateUserProps(userData);
+      return this.userData;
     } catch (error) {
       console.error("Login error:", error);
       throw error;
@@ -26,7 +29,7 @@ class AuthService {
       } else {
         console.log("No token found");
       }
-      this.user = null;
+      this.updateUserProps(null);
       return { response: "ok" };
     } catch (error) {
       console.error("Logout error:", error);
@@ -82,7 +85,7 @@ class AuthService {
 
   async sendLoginRequest(user) {
     const data = JSON.stringify(user);
-    const response = await fetch("http://localhost:3001/api/signin", {
+    const response = await fetch("http://localhost:3001/api/auth/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,6 +99,21 @@ class AuthService {
 
     return await response.json();
   }
+
+  updateUserProps(data) {
+    if (!data) {
+      this.userData = null;
+      this.email = null;
+      this.picture = null;
+      this.freeTrial = null;
+      return;
+    }
+    this.userData = data;
+    this.email = data.email;
+    this.picture = data.picture;
+    this.freeTrial = data.freeTrial;
+  }
 }
 
-export default AuthService;
+const user = new AuthService();
+export default user;
