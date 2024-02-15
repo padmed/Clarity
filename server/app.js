@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
-const User = require("./db/models/user");
 const cors = require("cors");
-const generateText = require("./services/llmAI");
+const authRouter = require("./controllers/auth");
+const aiRouter = require("./controllers/ai");
+const usersRouter = require("./controllers/users");
 
 const corsOptions = {
   origin: "chrome-extension://mfbigjpknmeflcogckmjhpghdjbfpmle",
@@ -12,46 +13,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-
-// Sign-in route
-app.post("/api/signin", async (req, res) => {
-  try {
-    const { email, picture } = req.body;
-    let user = await User.findOne({ email });
-    if (user) {
-      return res.status(202).json(user);
-    } else {
-      user = new User({ email, picture });
-      await user.save();
-      console.log("New user saved:", user);
-      return res.status(201).json(user);
-    }
-  } catch (error) {
-    console.error("Error while signing in:", error);
-    return res.status(500).json({ "Internal Server Error": error });
-  }
-});
-
-// Get all users route
-app.get("/api/users", async (req, res) => {
-  try {
-    const users = await User.find();
-    return res.status(200).json(users);
-  } catch (error) {
-    console.error("Error while fetching users:", error);
-    return res.status(500).json({ "Internal Server Error": error });
-  }
-});
-
-app.post("/api/ai/generate", async (req, res) => {
-  try {
-    const { prompt } = req.body;
-    const generatedText = await generateText(prompt);
-    return res.status(201).json(generatedText);
-  } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).json({ "Error while generating text:": error });
-  }
-});
+app.use("/api/auth", authRouter);
+app.use("/api/ai", aiRouter);
+app.use("/api/users", usersRouter);
 
 module.exports = app;
