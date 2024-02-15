@@ -2,6 +2,6 @@ POST http://localhost:3001/api/auth/signin
 Content-Type: application/json
 
 {
-    "email": "ddarcdhfiniadnd@gmail.com",
+    "email": "ddarchinian@gmail.com",
     "picture": "https://lh3.googleusercontent.com/a-/ALV-UjVhzyvT-mftflLVXjD5DmO2s1_YuhO-w90mHPuPyXIFwUht=s96-c"
 }

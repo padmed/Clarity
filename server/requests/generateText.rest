@@ -2,5 +2,6 @@ POST http://localhost:3001/api/ai/generate
 Content-Type: application/json
 
 {
-    "prompt": "Save your Test Plan and click the button to run the test. JMeter will simulate the specified number of concurrent users hitting the serverless function endpoint and measure performance metrics such as response time, throughput, and error rate."
+    "prompt": "Save your Test Plan and click the button to run the test. JMeter will simulate the specified number of concurrent users hitting the serverless function endpoint and measure performance metrics such as response time, throughput, and error rate.",
+    "email": "ddarchinian@gmail.com"
 }
