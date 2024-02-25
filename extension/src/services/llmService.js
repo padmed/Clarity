@@ -11,8 +11,8 @@ const getGeneratedText = async ({ prompt, email }) => {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    if (response.status === 402) {
+      return "Payment required";
     }
 
     const data = await response.json();

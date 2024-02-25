@@ -49,6 +49,10 @@ const handleMessages = (request, sender, sendResponse) => {
 const onContextMenuClicked = async (details) => {
   try {
     if (details.menuItemId === "mfbigjpknmeflcogckmjhpghdjbfpmle") {
+      if (!user.email) {
+        openOnboardingPage();
+        return;
+      }
       executeScript();
     }
   } catch (error) {

@@ -19,10 +19,6 @@ export const logOutReq = async () => {
 };
 
 export const generateTextReq = async (request, sender, sendResponse) => {
-  if (!user.email) {
-    await user.login();
-  }
-
   const generatedText = await getGeneratedText({
     prompt: request.prompt,
     email: user.email,
