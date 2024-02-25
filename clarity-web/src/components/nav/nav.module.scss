@@ -8,18 +8,8 @@
   overflow: hidden;
 }
 
-.waveBg {
-  position: absolute;
-  right: -350px;
-  height: auto;
-}
-
 @media only screen and (max-width: 600px) {
   .nav {
     justify-content: center; /* Center the content on mobile */
-  }
-
-  .waveBg {
-    display: none; /* Hide the wave background on mobile */
   }
 }
