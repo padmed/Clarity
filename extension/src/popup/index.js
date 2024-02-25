@@ -1,4 +1,3 @@
-import { generateText } from "./services/index.js";
 import listenPopupEvents, {
   handlePopupClose,
 } from "./utils/popupEventListeners.js";
@@ -10,8 +9,27 @@ import { getRootContainer } from "./utils/getElements.js";
 import { createRootContainer, createShadowRoot } from "./components/root.js";
 import { injectFonts } from "./utils/injectInDom.js";
 import logger from "./utils/logger.js";
+import generateText from "./utils/generateText.js";
 
-const initApp = () => {
+const openPopupWithGeneratedText = async () => {
+  openPopupAnimation(verticalPos);
+  showLoader();
+
+  try {
+    const prompt = window.getSelection().toString();
+    const generatedText = await generateText(prompt);
+    hideLoader();
+    writeInPopupContent(generatedText);
+  } catch (e) {
+    hideLoader();
+    const error = "Something went wrong";
+    writeInPopupContent(error);
+    logger.error(e);
+  }
+};
+
+const initApp = async () => {
+  // Handle popup close if it already exists
   if (getRootContainer()) {
     handlePopupClose();
   }
@@ -20,23 +38,7 @@ const initApp = () => {
   createShadowRoot();
   listenPopupEvents();
 
-  // Opening a popup
-  openPopupAnimation(verticalPos);
-  showLoader();
+  await openPopupWithGeneratedText();
 };
 
 initApp();
-const selection = window.getSelection();
-
-generateText(selection.toString())
-  .then((data) => {
-    hideLoader();
-    const text = data.results[0].generated_text;
-    writeInPopupContent(text);
-  })
-  .catch((e) => {
-    hideLoader();
-    const text = "Temporary out of service";
-    writeInPopupContent(text);
-    logger.error(e);
-  });
