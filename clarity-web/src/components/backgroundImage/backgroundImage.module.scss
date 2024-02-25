@@ -4,7 +4,7 @@
     background-position: 0 0; /* Start position of the wave */
   }
   50% {
-    background-position: 100% 50%; /* End position of the wave */
+    background-position: 100% 100%; /* End position of the wave */
   }
 }
 
@@ -18,7 +18,7 @@
 }
 
 .notResizing {
-  animation: wave 20s cubic-bezier(0.6, 0, 0.2, 1) infinite; /* Apply animation to the background */
+  animation: wave 24s cubic-bezier(0.6, 0, 0.2, 1) infinite; /* Apply animation to the background */
 }
 
 .isResizing {
