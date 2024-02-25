@@ -5,6 +5,7 @@ import {
   generateTextReq,
   createContextMenu,
   openOnboardingPage,
+  executeScript,
 } from "./handlers/backgroundFunctions";
 
 const handleError = (error, context) => {
@@ -48,15 +49,7 @@ const handleMessages = (request, sender, sendResponse) => {
 const onContextMenuClicked = async (details) => {
   try {
     if (details.menuItemId === "mfbigjpknmeflcogckmjhpghdjbfpmle") {
-      const [tab] = await chrome.tabs.query({
-        active: true,
-        lastFocusedWindow: true,
-      });
-
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["./content/content.index.js"],
-      });
+      executeScript();
     }
   } catch (error) {
     handleError(error, "onContextMenuClicked");

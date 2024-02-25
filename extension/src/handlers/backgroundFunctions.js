@@ -1,4 +1,5 @@
-import getGeneratedText from "./services/llmService";
+import getGeneratedText from "../services/llmService";
+import user from "../services/AuthService";
 
 export const openOnboardingPage = () => {
   const externalUrl = "http://localhost:3000/onboarding/signin";
@@ -40,4 +41,16 @@ export const createContextMenu = () => {
   } catch (error) {
     handleError(error, "createContextMenu");
   }
+};
+
+export const executeScript = async () => {
+  const [tab] = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true,
+  });
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ["./content/content.index.js"],
+  });
 };
