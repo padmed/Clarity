@@ -17,7 +17,7 @@ const generateText = async (prompt) => {
 
   try {
     const request = await axios.post(apiUrl, requestData, { headers: headers });
-    return request.data;
+    return request.data.results[0].generated_text;
   } catch (error) {
     console.error("Error:", error);
     return error;
