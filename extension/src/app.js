@@ -1,4 +1,5 @@
 import user from "./services/AuthService";
+import getGeneratedText from "./services/llmService";
 
 const handleError = (error, context) => {
   console.error(`Error in ${context}:`, error);
@@ -38,15 +39,39 @@ const handleOnStartup = async () => {
   }
 };
 
-const handleMessages = async (request, sender, sendResponse) => {
+const signinReq = async () => {
+  await user.login();
+  await chrome.storage.sync.set({ userData: user.userData });
+};
+
+const logOutReq = async () => {
+  await user.logout();
+  await chrome.storage.sync.set({ userData: null });
+};
+
+const generateTextReq = async (request, sender, sendResponse) => {
+  if (!user.email) {
+    await user.login();
+  }
+
+  const generatedText = await getGeneratedText({
+    prompt: request.prompt,
+    email: user.email,
+  });
+
+  sendResponse(generatedText);
+};
+
+const handleMessages = (request, sender, sendResponse) => {
   try {
     if (request.message === "signInRequest") {
-      await user.login();
-      await chrome.storage.sync.set({ userData: user.userData });
+      signinReq();
     } else if (request.message === "logOutRequest") {
-      await user.logout();
-      await chrome.storage.sync.set({ userData: null });
+      logOutReq();
+    } else if (request.message === "generateText") {
+      generateTextReq(request, sender, sendResponse);
     }
+    return true;
   } catch (error) {
     handleError(error, "handleMessages");
   }
