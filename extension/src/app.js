@@ -1,30 +1,21 @@
 import user from "./services/AuthService";
-import getGeneratedText from "./services/llmService";
+import {
+  signinReq,
+  logOutReq,
+  generateTextReq,
+  createContextMenu,
+  openOnboardingPage,
+} from "./handlers/backgroundFunctions";
 
 const handleError = (error, context) => {
   console.error(`Error in ${context}:`, error);
-};
-
-const createContextMenu = () => {
-  try {
-    chrome.contextMenus.create({
-      title: "Clarity",
-      contexts: ["selection"],
-      id: "mfbigjpknmeflcogckmjhpghdjbfpmle",
-    });
-  } catch (error) {
-    handleError(error, "createContextMenu");
-  }
 };
 
 const handleOnInstalled = (details) => {
   try {
     if (details.reason !== "install" && details.reason !== "update") return;
     createContextMenu();
-    const externalUrl = "http://localhost:3000/onboarding/signin";
-    chrome.tabs.create({ url: externalUrl }, (tab) => {
-      console.log("New tab launched with http://localhost:3000/");
-    });
+    openOnboardingPage();
   } catch (error) {
     handleError(error, "handleOnInstalled");
   }
@@ -37,29 +28,6 @@ const handleOnStartup = async () => {
   } catch (error) {
     handleError(error, "handleOnStartup");
   }
-};
-
-const signinReq = async () => {
-  await user.login();
-  await chrome.storage.sync.set({ userData: user.userData });
-};
-
-const logOutReq = async () => {
-  await user.logout();
-  await chrome.storage.sync.set({ userData: null });
-};
-
-const generateTextReq = async (request, sender, sendResponse) => {
-  if (!user.email) {
-    await user.login();
-  }
-
-  const generatedText = await getGeneratedText({
-    prompt: request.prompt,
-    email: user.email,
-  });
-
-  sendResponse(generatedText);
 };
 
 const handleMessages = (request, sender, sendResponse) => {
