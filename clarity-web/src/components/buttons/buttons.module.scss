@@ -1,24 +1,22 @@
 .googleSignin {
   width: 280px;
   height: 55px;
-  background-color: var(--red);
+  background-color: var(--red-darker);
   border-radius: 6px;
   margin-top: 60px;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-right: 25px;
   padding-left: 15px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: none;
 
   &:hover {
-    background-color: var(--red-darker);
-  }
-
-  &:active {
-    transform: scale(0.95);
+    background-color: rgb(178, 34, 34);
   }
 }
 

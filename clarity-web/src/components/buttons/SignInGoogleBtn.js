@@ -1,6 +1,8 @@
 "use client";
 import styles from "./buttons.module.scss";
 import Image from "next/image";
+import Button from "@mui/material/Button";
+import { libre_baskerville } from "@/styles/fonts";
 
 const SignInGoogleBtn = () => {
   const handleClick = () => {
@@ -16,7 +18,10 @@ const SignInGoogleBtn = () => {
   };
 
   return (
-    <button className={styles.googleSignin} onClick={handleClick}>
+    <Button
+      className={`${styles.googleSignin} ${libre_baskerville.className}`}
+      onClick={handleClick}
+    >
       <Image
         src={"/icons/google.svg"}
         width={27}
@@ -25,7 +30,7 @@ const SignInGoogleBtn = () => {
       ></Image>
       <span className={styles.line}></span>
       <span>Sign In with Google</span>
-    </button>
+    </Button>
   );
 };
 
