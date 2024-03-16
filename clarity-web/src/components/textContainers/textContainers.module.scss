@@ -1,0 +1,38 @@
+.parentContainer {
+  color: var(--bg-color-primary);
+  font-size: 15px;
+  margin-top: 80px;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 680px;
+  height: 260px;
+  border: 3px solid white;
+  border-radius: 8px;
+}
+
+.childContainer {
+  width: 673px;
+  height: 251px;
+  background-color: var(--text);
+  border-radius: 8px;
+  border: 4px solid var(--bg-color-secondary);
+  transition: top 0.1s ease-in-out, left 0.1s ease-in-out;
+  text-align: center;
+  padding: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .parentContainer {
+    width: 380px;
+    margin-top: 0;
+  }
+  .childContainer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
