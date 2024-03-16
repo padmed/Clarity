@@ -10,6 +10,11 @@
   --nav-height: 60px;
 }
 
+::selection {
+  background-color: #ffa500; /* Set your desired background color */
+  color: #fff; /* Set your desired text color */
+}
+
 html,
 body {
   height: 100%;
