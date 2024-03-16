@@ -1,26 +1,18 @@
-@keyframes wave {
-  0%,
-  100% {
-    background-position: 0 0; /* Start position of the wave */
-  }
-  50% {
-    background-position: 100% 100%; /* End position of the wave */
-  }
-}
-
-.backgroundImage {
-  width: 100%;
-  height: calc(100% - var(--nav-height));
+.backgroundPatternContainer {
+  width: 120vw;
+  height: calc(100vh - var(--nav-height));
+  overflow: hidden;
   position: absolute;
+}
+
+.svgWaves {
+  transform: scale(1);
   z-index: -100;
-  background-image: url("/patterns/BG.svg");
-  background-repeat: repeat-x;
-}
+  position: absolute;
+  overflow: hidden;
 
-.notResizing {
-  animation: wave 24s cubic-bezier(0.6, 0, 0.2, 1) infinite; /* Apply animation to the background */
-}
-
-.isResizing {
-  animation: none;
+  path {
+    width: 30000px;
+    height: 100%;
+  }
 }
