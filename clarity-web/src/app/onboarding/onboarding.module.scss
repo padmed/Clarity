@@ -5,9 +5,7 @@
   height: calc(100% - var(--nav-height));
 }
 
-.signinContainer {
-  width: 570px;
-  height: 382px;
+.container {
   border: 2px solid var(--text);
   border-radius: 4px;
   background-color: var(--bg-color-secondary);
@@ -17,7 +15,15 @@
   color: var(--text);
   margin: 20px;
 }
+.signinContainer {
+  width: 570px;
+  height: 382px;
+}
 
+.successContainer {
+  width: 828px;
+  height: 613px;
+}
 .heading {
   font-size: 37px;
   margin-top: 80px;
@@ -28,7 +34,7 @@
   font-size: 24px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .signinContainer {
     width: 420px;
   }
@@ -38,5 +44,14 @@
 
   .subHeading {
     font-size: 17px;
+  }
+
+  .successContainer {
+    .subHeading {
+      margin-bottom: 50px;
+    }
+
+    width: 460px;
+    height: 520px;
   }
 }
