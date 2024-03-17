@@ -7,7 +7,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-right: 25px;
   padding-left: 15px;
   color: var(--text);
@@ -20,10 +19,22 @@
   }
 }
 
+.notLoading {
+  justify-content: space-between;
+}
+
+.loading {
+  justify-content: center;
+}
+
 .line {
   height: 40px;
   width: 1px;
   background-color: rgba(255, 255, 255, 0.4);
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.progress {
+  color: var(--text);
 }
