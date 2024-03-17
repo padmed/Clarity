@@ -6,6 +6,7 @@ import {
   createContextMenu,
   openOnboardingPage,
   executeScript,
+  openOnboardingSuccessPage,
 } from "./handlers/backgroundFunctions";
 
 const handleError = (error, context) => {
@@ -34,7 +35,7 @@ const handleOnStartup = async () => {
 const handleMessages = (request, sender, sendResponse) => {
   try {
     if (request.message === "signInRequest") {
-      signinReq();
+      signinReq(request, sender, sendResponse);
     } else if (request.message === "logOutRequest") {
       logOutReq();
     } else if (request.message === "generateText") {
