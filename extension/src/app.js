@@ -51,7 +51,7 @@ const onContextMenuClicked = async (details) => {
   try {
     if (details.menuItemId === "mfbigjpknmeflcogckmjhpghdjbfpmle") {
       if (!user.email) {
-        openOnboardingPage();
+        openPage(ONBOARDING_SIGNIN_URL);
         return;
       }
       executeScript();
