@@ -1,16 +1,31 @@
 import getGeneratedText from "../services/llmService";
 import user from "../services/AuthService";
+import { BASE_URL, ONBOARDING_SUCCESS_URL } from "../utils/constants";
 
-export const openOnboardingPage = () => {
-  const externalUrl = "http://localhost:3000/onboarding/signin";
-  chrome.tabs.create({ url: externalUrl }, (tab) => {
-    console.log("New tab launched with http://localhost:3000/");
+export const openPage = (url) => {
+  chrome.tabs.create({ url }, (tab) => {
+    console.log("New tab launched with", url);
   });
 };
 
-export const signinReq = async () => {
+const signIn = async (sendResponse) => {
   await user.login();
   await chrome.storage.sync.set({ userData: user.userData });
+  sendResponse({ success: true });
+};
+
+export const signinReq = async (request, sender, sendResponse) => {
+  try {
+    if (sender.origin === BASE_URL) {
+      await signIn(sendResponse);
+      openPage(ONBOARDING_SUCCESS_URL);
+    } else {
+      await signIn(sendResponse);
+    }
+  } catch (error) {
+    sendResponse({ success: false });
+    handleError(error, "signinReq");
+  }
 };
 
 export const logOutReq = async () => {
