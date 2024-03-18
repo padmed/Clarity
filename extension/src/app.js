@@ -1,12 +1,12 @@
 import user from "./services/AuthService";
+import { ONBOARDING_SIGNIN_URL } from "./utils/constants";
 import {
   signinReq,
   logOutReq,
   generateTextReq,
   createContextMenu,
-  openOnboardingPage,
   executeScript,
-  openOnboardingSuccessPage,
+  openPage,
 } from "./handlers/backgroundFunctions";
 
 const handleError = (error, context) => {
@@ -17,7 +17,7 @@ const handleOnInstalled = (details) => {
   try {
     if (details.reason !== "install" && details.reason !== "update") return;
     createContextMenu();
-    openOnboardingPage();
+    openPage(ONBOARDING_SIGNIN_URL);
   } catch (error) {
     handleError(error, "handleOnInstalled");
   }
