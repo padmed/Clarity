@@ -7,7 +7,7 @@ class AuthService {
   }
 
   async initialize() {
-    const userData = await chrome.storage.sync.get(["userData"]);
+    const { userData } = await chrome.storage.sync.get(["userData"]);
 
     if (!userData) {
       this.updateUserProps(null);

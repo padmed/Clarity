@@ -25,8 +25,7 @@ const handleOnInstalled = (details) => {
 
 const handleOnStartup = async () => {
   try {
-    const userData = await chrome.storage.sync.get(["userData"]);
-    user.updateUserProps(userData);
+    await user.initialize();
   } catch (error) {
     handleError(error, "handleOnStartup");
   }
