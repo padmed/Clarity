@@ -1,22 +1,23 @@
+.buttonRed {
+  background-color: var(--red-darker);
+  border-radius: 6px;
+  color: var(--text);
+  font-weight: bold;
+  text-transform: none;
+  &:hover {
+    background-color: rgb(178, 34, 34);
+  }
+}
+
 .googleSignin {
   width: 280px;
   height: 55px;
-  background-color: var(--red-darker);
-  border-radius: 6px;
   margin-top: 60px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   padding-right: 25px;
   padding-left: 15px;
-  color: var(--text);
   font-size: 18px;
-  font-weight: bold;
-  text-transform: none;
-
-  &:hover {
-    background-color: rgb(178, 34, 34);
-  }
 }
 
 .notLoading {
@@ -37,4 +38,11 @@
 
 .progress {
   color: var(--text);
+}
+
+.getOnChrome {
+  width: 150px;
+  height: 40px;
+  font-size: 13px;
+  margin-left: auto;
 }
