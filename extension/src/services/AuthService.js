@@ -6,6 +6,16 @@ class AuthService {
     this.freeTrial = null;
   }
 
+  async initialize() {
+    const userData = await chrome.storage.sync.get(["userData"]);
+
+    if (!userData) {
+      this.updateUserProps(null);
+      return;
+    }
+    this.updateUserProps(userData);
+  }
+
   async login() {
     try {
       // Step 1: Get authentication token
