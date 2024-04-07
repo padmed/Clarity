@@ -29,7 +29,7 @@ const SignInGoogleBtn = () => {
 
   return (
     <Button
-      className={`${styles.googleSignin} ${styles.buttonRed} ${
+      className={`${styles.googleSignin} ${styles.button} ${styles.buttonRed} ${
         loading ? styles.loading : styles.notLoading
       } ${libre_baskerville.className}`}
       onClick={handleClick}
