@@ -6,7 +6,11 @@ const Nav = ({ showButton }) => {
   return (
     <nav className={styles.nav}>
       <Logo />
-      {showButton && <CtaButton variant={1} />}
+      {showButton && (
+        <CtaButton variant={"red"} size={"s"} position={{ marginLeft: "auto" }}>
+          Get it on Chrome
+        </CtaButton>
+      )}
     </nav>
   );
 };
