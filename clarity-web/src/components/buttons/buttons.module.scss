@@ -1,11 +1,21 @@
+.button {
+  border-radius: 7px;
+  text-transform: none;
+}
+
 .buttonRed {
   background-color: var(--red-darker);
-  border-radius: 6px;
   color: var(--text);
-  font-weight: bold;
-  text-transform: none;
   &:hover {
     background-color: rgb(178, 34, 34);
+  }
+}
+
+.buttonWhite {
+  background-color: var(--text);
+  color: var(--bg-color-primary);
+  &:hover {
+    background-color: #bebdbf;
   }
 }
 
@@ -41,8 +51,29 @@
 }
 
 .getOnChrome {
+  margin-left: 50px;
+
+  img {
+    margin-right: 18px;
+  }
+}
+
+.large {
+  width: 275px;
+  height: 65px;
+  font-weight: bold;
+}
+
+.small {
   width: 150px;
   height: 40px;
   font-size: 13px;
-  margin-left: auto;
+  font-weight: bold;
+}
+
+.medium {
+  width: 160px;
+  height: 55px;
+  font-size: 16px;
+  font-weight: bold;
 }
