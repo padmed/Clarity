@@ -5,7 +5,7 @@ import { Libre_Baskerville } from "next/font/google";
 export const judson = Judson({
   subsets: ["latin"],
   variable: "--font-judson",
-  weight: "700",
+  weight: "400",
 });
 
 export const libre_bodoni = Libre_Bodoni({
