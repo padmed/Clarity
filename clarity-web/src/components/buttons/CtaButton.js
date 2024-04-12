@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { libre_baskerville } from "@/styles/fonts";
 import { useEffect, useState } from "react";
 
-const CtaButton = ({ variant, children, size, position }) => {
+const CtaButton = ({ variant, children, size, position, classNames }) => {
   const [sizeClassname, setSizeClassname] = useState("");
   const [variantClassname, setVariantClassname] = useState("");
 
@@ -40,7 +40,7 @@ const CtaButton = ({ variant, children, size, position }) => {
   return (
     <Button
       style={{ ...position }}
-      className={` ${styles.button} ${variantClassname} ${libre_baskerville.className} ${styles.getOnChrome} ${sizeClassname}`}
+      className={` ${styles.button} ${variantClassname} ${libre_baskerville.className} ${styles.getOnChrome} ${sizeClassname} ${classNames}`}
     >
       {children}
     </Button>
