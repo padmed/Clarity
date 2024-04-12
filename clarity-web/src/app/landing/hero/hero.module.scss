@@ -1,0 +1,39 @@
+#Hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--text);
+  height: max(calc(100vh), 700px);
+}
+
+.HeroHeading {
+  font-size: var(--text-xl);
+}
+
+.HeroSubHeading {
+  font-size: var(--text-lg);
+  text-align: center;
+  font-weight: lighter;
+  width: 70%;
+  letter-spacing: 1px;
+  margin-top: 50px;
+}
+
+.buttonsPlaceholder {
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 480px;
+
+  @media (max-width: 768px) {
+    height: 150px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    width: 200px;
+  }
+}
