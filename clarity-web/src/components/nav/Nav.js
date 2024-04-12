@@ -7,7 +7,12 @@ const Nav = ({ showButton }) => {
     <nav className={styles.nav}>
       <Logo />
       {showButton && (
-        <CtaButton variant={"red"} size={"s"} position={{ marginLeft: "auto" }}>
+        <CtaButton
+          classNames={styles.navButton}
+          variant={"red"}
+          size={"s"}
+          position={{ marginLeft: "auto" }}
+        >
           Get it on Chrome
         </CtaButton>
       )}
