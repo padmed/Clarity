@@ -1,30 +1,14 @@
-// "use client";
 import styles from "./about.module.scss";
-// import { motion } from "framer-motion";
+import BubbleContainer from "@/components/textContainers/BubbleContainer";
 
 const About = () => {
-  // const container = {
-  //   hidden: { opacity: 0 },
-  //   show: {
-  //     opacity: 1,
-  //     transition: {
-  //       delayChildren: 0.5,
-  //     },
-  //   },
-  // };
   return (
     <div id={styles.About}>
       <div id={styles.AboutHeading}>
         <span>What do we solve?</span>
       </div>
       <div className={styles.AboutSectionWrapper}>
-        <div
-          // initial="hidden"
-          // animate="show"
-          // variants={container}
-          className={styles.TextContainer}
-          id={styles.TextContainerLeft}
-        >
+        <BubbleContainer>
           <h4 className={styles.AboutSubHeading}>The Problem</h4>
           <p className={styles.AboutContent}>
             In a world full of confusing technical jargon, it's like we're
@@ -32,15 +16,8 @@ const About = () => {
             ideas and learn from each other. We're missing out on cool stuff!
             Let's fix that.
           </p>
-          <div className={styles.ContainerArrowPointer}></div>
-        </div>
-        <div
-          // initial="hidden"
-          // animate="show"
-          // variants={container}
-          className={styles.TextContainer}
-          id={styles.TextContainerRight}
-        >
+        </BubbleContainer>
+        <BubbleContainer right>
           <h4 className={styles.AboutSubHeading}>Clarity</h4>
           <p className={styles.AboutContent}>
             Imagine turning complex talk into plain and simple language that
@@ -49,8 +26,7 @@ const About = () => {
             It's time to break down the barriers and make understanding each
             other a breeze!
           </p>
-          <div className={styles.ContainerArrowPointer}></div>
-        </div>
+        </BubbleContainer>
       </div>
     </div>
   );
