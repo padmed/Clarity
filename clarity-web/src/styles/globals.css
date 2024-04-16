@@ -8,6 +8,47 @@
 
   /* constant sizes */
   --nav-height: 60px;
+  font-size: 62.5%;
+
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-md: 20px;
+  --text-lg: 20px;
+  --text-xl: 40px;
+  --text-2xl: 60px;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --text-xs: 13px;
+    --text-sm: 16px;
+    --text-md: 18px;
+    --text-lg: 24px;
+    --text-xl: 55px;
+    --text-2xl: 34px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --text-xs: 13px;
+    --text-sm: 18px;
+    --text-md: 25px;
+    --text-lg: 30px;
+    --text-xl: 64px;
+    --text-2xl: 80px;
+  }
+}
+
+@media screen and (min-width: 2440px) {
+  :root {
+    --text-xs: 13px;
+    --text-sm: 30px;
+    --text-md: 35px;
+    --text-lg: 40px;
+    --text-xl: 80px;
+    --text-2xl: 100px;
+  }
 }
 
 ::selection {
