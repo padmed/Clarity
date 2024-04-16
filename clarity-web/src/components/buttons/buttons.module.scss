@@ -27,7 +27,7 @@
   align-items: center;
   padding-right: 25px;
   padding-left: 15px;
-  font-size: 18px;
+  font-size: 48px;
 }
 
 .notLoading {
@@ -51,8 +51,6 @@
 }
 
 .getOnChrome {
-  margin-left: 50px;
-
   img {
     margin-right: 18px;
   }
@@ -60,20 +58,20 @@
 
 .large {
   width: 275px;
-  height: 65px;
+  height: 60px;
   font-weight: bold;
 }
 
 .small {
   width: 150px;
   height: 40px;
-  font-size: 13px;
+  font-size: var(--text-xs);
   font-weight: bold;
 }
 
 .medium {
   width: 160px;
-  height: 55px;
+  height: 58px;
   font-size: 16px;
   font-weight: bold;
 }

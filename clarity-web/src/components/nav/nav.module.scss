@@ -4,12 +4,22 @@
   display: flex;
   align-items: center;
   padding: 15px 50px;
-  position: relative;
+  width: 100%;
+  position: fixed;
   overflow: hidden;
+  z-index: 3;
+}
+
+.navButton {
+  display: flex;
 }
 
 @media only screen and (max-width: 600px) {
   .nav {
     justify-content: center; /* Center the content on mobile */
+  }
+
+  .navButton {
+    display: none;
   }
 }
