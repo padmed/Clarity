@@ -27,7 +27,7 @@
   align-items: center;
   padding-right: 25px;
   padding-left: 15px;
-  font-size: 48px;
+  font-size: 18px;
 }
 
 .notLoading {
@@ -60,6 +60,7 @@
   width: 275px;
   height: 60px;
   font-weight: bold;
+  font-size: var(--text-xs);
 }
 
 .small {
