@@ -7,7 +7,7 @@ const tokens = document.querySelector(".tokens");
 
 const initActionMenu = async () => {
   await user.initialize();
-  const { userData } = user.userData;
+  const { userData } = user;
 
   if (!userData) {
     const userGreeting = document.querySelector(".greetUser");
